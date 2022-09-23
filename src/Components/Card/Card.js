@@ -1,3 +1,4 @@
+import "./Card.css";
 export const Card = (props) => {
   const {
     status,
@@ -10,17 +11,21 @@ export const Card = (props) => {
     hairColour,
   } = props;
   return (
-    <div>
-      <p>
-        {status}
-        {degree}
-      </p>
-      <img src={image} alt={name} />
-      <p>{name}</p>
-      <p>{dateOfBirth}</p>
-      <p>{gender}</p>
-      <p>{eyeColour}</p>
-      <p>{hairColour}</p>
+    <div className="card-content">
+      <div className="card-content-left">
+        <img src={image} alt={name} />
+      </div>
+      <div className="card-content-right">
+        <p>
+          {status}
+          {degree}
+        </p>
+        <p>{name}</p>
+        <p>{dateOfBirth}</p>
+        <p>{gender}</p>
+        <p>{eyeColour}</p>
+        <p>{hairColour}</p>
+      </div>
     </div>
   );
 };
