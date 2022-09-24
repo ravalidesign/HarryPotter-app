@@ -1,6 +1,7 @@
 import "./Card.css";
 export const Card = (props) => {
   const {
+    character,
     status,
     degree,
     image,
@@ -9,9 +10,11 @@ export const Card = (props) => {
     gender,
     eyeColour,
     hairColour,
+    handleSaveFavorite,
   } = props;
   return (
     <div className="card-content">
+      <button onClick={() => handleSaveFavorite(character)}>add</button>
       <div className="card-content-left">
         <img src={image} alt={name} />
       </div>
