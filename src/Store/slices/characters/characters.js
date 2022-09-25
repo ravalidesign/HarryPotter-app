@@ -19,13 +19,27 @@ export const characterSlice = createSlice({
         };
       }
     },
+    setDeleteFavoriteCharacters: (state, action) => {
+      const characterFound = state.favoriteCharacters.find(
+        (item) => item.name === action.payload
+      );
+      if (characterFound) {
+        state.favoriteCharacters.splice(
+          state.favoriteCharacters.indexOf(characterFound, 1)
+        );
+      }
+    },
   },
 });
 
-export const { setFavoriteCharacters } = characterSlice.actions;
+export const { setFavoriteCharacters, setDeleteFavoriteCharacters } =
+  characterSlice.actions;
 
 export default characterSlice.reducer;
 
 export const addFavoriteCharacter = (personaje) => (dispatch) => {
   dispatch(setFavoriteCharacters(personaje));
+};
+export const deleteFavoriteCharacters = (name) => (dispatch) => {
+  dispatch(setDeleteFavoriteCharacters(name));
 };

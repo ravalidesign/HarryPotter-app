@@ -4,7 +4,10 @@ import { Card } from "../Card/Card";
 import { FavoritesList } from "../favoritesList/FavoritesList";
 import Students from "../../JSON/hp.students.json";
 import Staff from "../../JSON/hp.staff.json";
-import { addFavoriteCharacter } from "../../Store/slices/characters/characters";
+import {
+  addFavoriteCharacter,
+  deleteFavoriteCharacters,
+} from "../../Store/slices/characters/characters";
 import { useDispatch, useSelector } from "react-redux";
 
 export const Dashboard = () => {
@@ -23,11 +26,11 @@ export const Dashboard = () => {
   };
 
   const handleSaveFavorite = (personaje) => {
-    if (Students.find((item) => item.name !== personaje.name)) {
-      dispatch(addFavoriteCharacter(personaje));
-    } else {
-      console.log("Este personaje ya existe");
-    }
+    dispatch(addFavoriteCharacter(personaje));
+  };
+
+  const handleDeleteFavoriteCharacters = (name) => {
+    dispatch(deleteFavoriteCharacters(name));
   };
 
   return (
@@ -37,7 +40,11 @@ export const Dashboard = () => {
         favoriteCharacters.map((item) => (
           <div>
             <li key={item.name}>
-              <FavoritesList name={item.name} image={item.image} />
+              <FavoritesList
+                name={item.name}
+                image={item.image}
+                handleDeleteFavoriteCharacters={handleDeleteFavoriteCharacters}
+              />
             </li>
           </div>
         ))}
