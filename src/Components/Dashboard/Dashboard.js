@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Dashboard.css";
 import { Card } from "../Card/Card";
+import { FavoritesList } from "../favoritesList/FavoritesList";
 import Students from "../../JSON/hp.students.json";
 import Staff from "../../JSON/hp.staff.json";
 import { addFavoriteCharacter } from "../../Store/slices/characters/characters";
@@ -8,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const Dashboard = () => {
   const [isStudent, setIsstudent] = useState(true);
+  const [isOpenList, setIsOpenList] = useState(false);
 
   const { favoriteCharacters } = useSelector(
     (state) => state.favoriteCharacters
@@ -30,6 +32,16 @@ export const Dashboard = () => {
 
   return (
     <>
+      <button onClick={() => setIsOpenList(true)}>Favoritos</button>
+      {isOpenList &&
+        favoriteCharacters.map((item) => (
+          <div>
+            <li key={item.name}>
+              <FavoritesList name={item.name} image={item.image} />
+            </li>
+          </div>
+        ))}
+
       <button onClick={() => handleFilter(true)}>Estudiantes</button>
       <button onClick={() => handleFilter(false)}>Staff</button>
       <div className="dashboard-content">

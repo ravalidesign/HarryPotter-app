@@ -7,7 +7,10 @@ export const characterSlice = createSlice({
   },
   reducers: {
     setFavoriteCharacters: (state, action) => {
-      if (state.favoriteCharacters.length < 5) {
+      const characterIndex = state.favoriteCharacters.findIndex(
+        (item) => item.name === action.payload.name
+      );
+      if (state.favoriteCharacters.length < 5 && characterIndex === -1) {
         let newFav = [...state.favoriteCharacters];
         newFav.push(action.payload);
         return {
@@ -25,34 +28,4 @@ export default characterSlice.reducer;
 
 export const addFavoriteCharacter = (personaje) => (dispatch) => {
   dispatch(setFavoriteCharacters(personaje));
-  console.log(personaje);
 };
-
-// import {
-//     SET_FAVORITES
-// } from './constants'
-
-// const Reducer = (state, action) => {
-//     switch (action.type){
-
-//         case SET_FAVORITES:{
-//             if(state.favorites.length<5){
-//                 const newFav = [...state.favorites];
-//                 newFav.push(action.payload)
-//                 return {
-//                     ...state,
-//                     favorites:newFav
-//                 }
-//             }else{
-//                 return {
-//                     ...state
-//                 }
-//             }
-//         }
-//         default:{
-
-//         }
-//     }
-
-// }
-// export default Reducer;

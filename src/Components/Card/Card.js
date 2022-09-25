@@ -14,11 +14,11 @@ export const Card = (props) => {
   } = props;
   return (
     <div className="card-content">
-      <button onClick={() => handleSaveFavorite(character)}>add</button>
       <div className="card-content-left">
         <img src={image} alt={name} />
       </div>
       <div className="card-content-right">
+        <button onClick={() => handleSaveFavorite(character)}>add</button>
         <p>
           {status}
           {degree}
