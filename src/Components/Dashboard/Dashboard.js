@@ -1,9 +1,12 @@
 import { useState } from "react";
-import "./Dashboard.css";
 import { Card } from "../Card/Card";
 import { FavoritesList } from "../favoritesList/FavoritesList";
 import Students from "../../JSON/hp.students.json";
 import Staff from "../../JSON/hp.staff.json";
+import logohp from "../../assets/logohp.png";
+import favoriteIcon from "../../assets/favoriteIcon.png";
+import addIcon from "../../assets/addIcon.png";
+
 import {
   addFavoriteCharacter,
   deleteFavoriteCharacters,
@@ -34,24 +37,39 @@ export const Dashboard = () => {
   };
 
   return (
-    <>
-      <button onClick={() => setIsOpenList(true)}>Favoritos</button>
-      {isOpenList &&
-        favoriteCharacters.map((item) => (
-          <div>
-            <li key={item.name}>
+    <div className="background">
+      <div className="header-content">
+        <div className="header-buttons">
+          <button onClick={() => setIsOpenList(true)}>
+            FAVORITOS <img src={favoriteIcon} alt="favoriteIcon" />
+          </button>
+          <button>
+            AGREGAR <img src={addIcon} alt="addIcon" />
+          </button>
+        </div>
+        {isOpenList &&
+          favoriteCharacters.map((item) => (
+            <div className="favorite-characters-list" key={item.name}>
               <FavoritesList
                 name={item.name}
                 image={item.image}
                 handleDeleteFavoriteCharacters={handleDeleteFavoriteCharacters}
               />
-            </li>
+            </div>
+          ))}
+        <div className="dashboards-button-content">
+          <div className="logohp-img">
+            <img src={logohp} alt="logoHp" />
+            <p>Selecciona tu filtro</p>
           </div>
-        ))}
-
-      <button onClick={() => handleFilter(true)}>Estudiantes</button>
-      <button onClick={() => handleFilter(false)}>Staff</button>
-      <div className="dashboard-content">
+          <div className="filter-characters-buttons">
+            <button onClick={() => handleFilter(true)}>ESTUDIANTES</button>
+            <div className="space-button"></div>
+            <button onClick={() => handleFilter(false)}>STAFF</button>
+          </div>
+        </div>
+      </div>
+      <div className="dashboard-cards-content">
         {isStudent
           ? Students.map((item) => (
               <Card
@@ -66,6 +84,7 @@ export const Dashboard = () => {
                 hairColour={item.hairColour}
                 handleSaveFavorite={handleSaveFavorite}
                 character={item}
+                house={item.house}
               />
             ))
           : Staff.map((item) => (
@@ -79,9 +98,10 @@ export const Dashboard = () => {
                 gender={item.gender}
                 eyeColour={item.eyeColour}
                 hairColour={item.hairColour}
+                house={item.house}
               />
             ))}
       </div>
-    </>
+    </div>
   );
 };

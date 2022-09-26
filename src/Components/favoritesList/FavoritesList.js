@@ -1,15 +1,15 @@
-import "./FavoriteList.css";
+import trash from "../../assets/trash.png";
 export const FavoritesList = (props) => {
   const { image, name, handleDeleteFavoriteCharacters } = props;
   return (
     <div className="list-container">
-      <ul>
+      <div className="container">
         <img src={image} alt={name} />
         <p>{name}</p>
         <button onClick={() => handleDeleteFavoriteCharacters(name)}>
-          borrar
+          <img src={trash} alt="trash" />
         </button>
-      </ul>
+      </div>
     </div>
   );
 };
