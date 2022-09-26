@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { Card } from "../Card/Card";
 import { FavoritesList } from "../favoritesList/FavoritesList";
-import Students from "../../JSON/hp.students.json";
-import Staff from "../../JSON/hp.staff.json";
+import characters from "../../JSON/characters.json";
 import logohp from "../../assets/logohp.png";
 import favoriteIcon from "../../assets/favoriteIcon.png";
 import addIcon from "../../assets/addIcon.png";
-
 import {
   addFavoriteCharacter,
   deleteFavoriteCharacters,
@@ -20,7 +18,6 @@ export const Dashboard = () => {
   const { favoriteCharacters } = useSelector(
     (state) => state.favoriteCharacters
   );
-  console.log(favoriteCharacters, "FAVORITECHARACTERS");
 
   const dispatch = useDispatch();
 
@@ -71,7 +68,7 @@ export const Dashboard = () => {
       </div>
       <div className="dashboard-cards-content">
         {isStudent
-          ? Students.map((item) => (
+          ? characters.students.map((item) => (
               <Card
                 key={item.name}
                 status={item.alive ? "vivo" : "finado"}
@@ -87,7 +84,7 @@ export const Dashboard = () => {
                 house={item.house}
               />
             ))
-          : Staff.map((item) => (
+          : characters.staff.map((item) => (
               <Card
                 key={item.name}
                 status={item.alive ? "vivo" : "finado"}
@@ -98,6 +95,8 @@ export const Dashboard = () => {
                 gender={item.gender}
                 eyeColour={item.eyeColour}
                 hairColour={item.hairColour}
+                handleSaveFavorite={handleSaveFavorite}
+                character={item}
                 house={item.house}
               />
             ))}
