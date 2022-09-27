@@ -1,5 +1,8 @@
 # HARRY POTTER UI 
 
+![mobile-view](https://user-images.githubusercontent.com/73270209/192543000-5c2033a5-40e1-4c40-af27-734f96245047.jpeg)
+![modal-view](https://user-images.githubusercontent.com/73270209/192543141-2b97052e-9e2f-415c-b015-3ce08e8b2756.jpeg)
+![desktop-view](https://user-images.githubusercontent.com/73270209/192543173-a50023df-1cc9-4a77-a11f-18fa2d67f6cb.jpeg)
 
 ## ¿Cómo desplegar esta aplicación?
 
