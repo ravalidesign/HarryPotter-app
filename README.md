@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# HARRY POTTER UI 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## ¿Cómo desplegar esta aplicación?
 
-In the project directory, you can run:
+Primeros pasos (Asumiendo que ya cuentas con git instalado en tu computadora, un IDE y una terminal): Hacer fork del proyecto, posteriormente git clone, y npm i para instalar las dependencias empleadas. Desplegar el server: como uno de los requerimientos, este proyecto se realiza con json server por lo que se debe desplegar nuestro servidor: abrir la terminar y ejecutar el comando npm run mock-api Desplegar el local: ¡Asegurarte de que la ruta mostrada en la terminal es correcta! y ejecuta el comando * npm start *
 
-### `npm start`
+## Mi proceso de desarrollo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### ¿Qué fue lo que más me gusto de mi desarrollo?
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Me gustó mucho el reto que implicó realizar este proyecto fué muy poco el tiempo en el que pude desarrollar, tuve varios errores, que pude ir solucionando conforme iba generando el código, me he enamorado del desarrollo porque siempre se trata de investigar, de solucionar problemas y de ser creativo para generar tus algorítmos, elementos que aplique en el proceso de realizar este proyecto.
 
-### `npm test`
+-descubrí que SASS es una herramienta muy útil que permite genrar un código CSS mucho más estructurado, y me gustaría seguir usánsolo en mis proyectos, así como también conocer cómo funciona JSON server, ya que no soy muy afin al backend y aprendí cosas sobre como se estructura una petición y me resultó muy interesante, lo cual fue nuevo para mí, me gusta mucho el desarrollo porque se trata de un aprendizaje continuo.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-Me gustó mucho trabajar con REDUX es una forma muy estructurada de generar funciones, ya tenía conocimiento sobre esta arquitectura pero lo había usado con el hook useReducer y en esta ocasión pude hacerlo con REDUX toolkit.
 
-### `npm run build`
+### Si hubiera tenido más tiempo ¿Qué me hubiera mejorado o qué mas hubiera hecho? 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-Si hubiera tenido más tiempo me hubiera gustado generar la parte de agregar personaje, ya que hubiera profundizado más en JSON server que es una tecnología que use por primera vez y que me pareció que se le puede sacar mucho provecho.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-Creo que de igual forma haber concluido los estilos de una mejor manera, ya que me falto trabajo en esa parte, los estilos CSS es mi area de oportunidad dentro del desarrollo, pero suelo hacer bastantes ejercicios para mejorar sobre todo la rapidez con la que maqueto y genero estilos.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### ¿Cuáles fueron mis pain points y bugs y cómo lo solucioné?
 
-### `npm run eject`
+-Tuve problemas para generar la parte de estilos en el background de la Card para identificar de que casa eran los perosnajes, así como el background para indicar que el personaje ya estaba muerto, lo soluciones generando una función que me permitía cambiar los estilos de manera dinámica,
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+-Fue mi primera vez usando SASS, JSON SERVER Y Redux toolkit , tuve algunas dificultades para implementarlos, pero con mucha investigación y viendo tutoriales, logre generar la mayoría de las funcionalidades, fue todo un reto aprender en 4 días las cuestiones básicas de dichas tecnologías
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-Los estilos es algo que me lleva mucho tiempo de hacer y tuve errores en el camino, pero los pude solucionar con prueba y error, ya que aun hay cosas de CSS que no se o que no recuerdo, pero Google es mi amigo y siempre tiene una respuesta para todas mis dudas.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
