@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "../Card/Card";
 import { FavoritesList } from "../favoritesList/FavoritesList";
-import characters from "../../JSON/characters.json";
 import logohp from "../../assets/logohp.png";
 import favoriteIcon from "../../assets/favoriteIcon.png";
 import addIcon from "../../assets/addIcon.png";
@@ -10,20 +9,35 @@ import {
   deleteFavoriteCharacters,
 } from "../../Store/slices/characters/characters";
 import { useDispatch, useSelector } from "react-redux";
+import { helpHttp } from "../../helpers/helpHttp";
 
 export const Dashboard = () => {
-  const [isStudent, setIsstudent] = useState(true);
   const [isOpenList, setIsOpenList] = useState(false);
+  const [db, setDb] = useState([]);
+  const [filter, setFilter] = useState([]);
+
+  console.log(db.map((item) => item));
+
+  const filterCharacter = (degree) => {
+    if (degree === "students") {
+      setFilter(db.filter((item) => item.hogwartsStudent === true));
+    }
+    if (degree === "staff") {
+      setFilter(db.filter((item) => item.hogwartsStudent === false));
+    }
+  };
+  let api = helpHttp();
+  let url = "http://localhost:5000/characters";
+
+  useEffect(() => {
+    api.get(url).then((res) => setDb(res));
+  }, []);
 
   const { favoriteCharacters } = useSelector(
     (state) => state.favoriteCharacters
   );
 
   const dispatch = useDispatch();
-
-  const handleFilter = (status) => {
-    setIsstudent(status);
-  };
 
   const handleSaveFavorite = (personaje) => {
     dispatch(addFavoriteCharacter(personaje));
@@ -60,46 +74,47 @@ export const Dashboard = () => {
             <p>Selecciona tu filtro</p>
           </div>
           <div className="filter-characters-buttons">
-            <button onClick={() => handleFilter(true)}>ESTUDIANTES</button>
+            <button onClick={() => filterCharacter("students")}>
+              ESTUDIANTES
+            </button>
             <div className="space-button"></div>
-            <button onClick={() => handleFilter(false)}>STAFF</button>
+            <button onClick={() => filterCharacter("staff")}>STAFF</button>
           </div>
         </div>
       </div>
       <div className="dashboard-cards-content">
-        {isStudent
-          ? characters.students.map((item) => (
-              <Card
-                key={item.name}
-                status={item.alive ? "vivo" : "finado"}
-                degree={item.hogwartsStudent ? "Estudiante" : "Staff"}
-                image={item.image}
-                name={item.name}
-                dateOfBirth={item.dateOfBirth}
-                gender={item.gender}
-                eyeColour={item.eyeColour}
-                hairColour={item.hairColour}
-                handleSaveFavorite={handleSaveFavorite}
-                character={item}
-                house={item.house}
-              />
-            ))
-          : characters.staff.map((item) => (
-              <Card
-                key={item.name}
-                status={item.alive ? "vivo" : "finado"}
-                degree={item.hogwartsStudent ? "Estudiante" : "Staff"}
-                image={item.image}
-                name={item.name}
-                dateOfBirth={item.dateOfBirth}
-                gender={item.gender}
-                eyeColour={item.eyeColour}
-                hairColour={item.hairColour}
-                handleSaveFavorite={handleSaveFavorite}
-                character={item}
-                house={item.house}
-              />
-            ))}
+        {filter.map((item) => (
+          <Card
+            key={item.name}
+            status={item.alive ? "vivo" : "finado"}
+            degree={item.hogwartsStudent ? "Estudiante" : "Staff"}
+            image={item.image}
+            name={item.name}
+            dateOfBirth={item.dateOfBirth}
+            gender={item.gender}
+            eyeColour={item.eyeColour}
+            hairColour={item.hairColour}
+            handleSaveFavorite={handleSaveFavorite}
+            character={item}
+            house={item.house}
+          />
+        ))}
+        {db.map((item) => (
+          <Card
+            key={item.name}
+            status={item.alive ? "vivo" : "finado"}
+            degree={item.hogwartsStudent ? "Estudiante" : "Staff"}
+            image={item.image}
+            name={item.name}
+            dateOfBirth={item.dateOfBirth}
+            gender={item.gender}
+            eyeColour={item.eyeColour}
+            hairColour={item.hairColour}
+            handleSaveFavorite={handleSaveFavorite}
+            character={item}
+            house={item.house}
+          />
+        ))}
       </div>
     </div>
   );
