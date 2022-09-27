@@ -30,7 +30,6 @@
 }
 
 .favorite-characters-list {
-    background-color: $purple;
     border-radius: 0 0 10px 10px;
     margin-left: 70%;
     width: 281px;
@@ -38,6 +37,14 @@
     @media (max-width: 700px) {
         margin-left: 10px;
     }
+}
+
+.favorite-charaters-list-container{
+    background-color: $purple;
+    width: 281px;
+    margin-left: 70%;
+    margin-top:-10px;
+    border-radius: 0 0 10px 10px;
 }
 
 .dashboard-cards-content {
