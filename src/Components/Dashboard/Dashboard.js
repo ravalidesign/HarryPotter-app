@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card } from "../Card/Card";
 import { FavoritesList } from "../favoritesList/FavoritesList";
+import { Modal } from "../Modal/Modal";
 import logohp from "../../assets/logohp.png";
 import favoriteIcon from "../../assets/favoriteIcon.png";
 import addIcon from "../../assets/addIcon.png";
@@ -15,8 +16,7 @@ export const Dashboard = () => {
   const [isOpenList, setIsOpenList] = useState(false);
   const [db, setDb] = useState([]);
   const [filter, setFilter] = useState([]);
-
-  console.log(db.map((item) => item));
+  const [open, setOpen] = useState(false);
 
   const filterCharacter = (degree) => {
     if (degree === "students") {
@@ -47,6 +47,15 @@ export const Dashboard = () => {
     dispatch(deleteFavoriteCharacters(name));
   };
 
+  const hideModal = () => {
+    console.log("closing modal");
+    setOpen(false);
+  };
+
+  const showModal = () => {
+    setOpen(true);
+  };
+
   return (
     <div className="background">
       <div className="header-content">
@@ -54,20 +63,26 @@ export const Dashboard = () => {
           <button onClick={() => setIsOpenList(true)}>
             FAVORITOS <img src={favoriteIcon} alt="favoriteIcon" />
           </button>
-          <button>
+          <button onClick={() => showModal()}>
             AGREGAR <img src={addIcon} alt="addIcon" />
           </button>
         </div>
-        {isOpenList &&
-          favoriteCharacters.map((item) => (
-            <div className="favorite-characters-list" key={item.name}>
-              <FavoritesList
-                name={item.name}
-                image={item.image}
-                handleDeleteFavoriteCharacters={handleDeleteFavoriteCharacters}
-              />
-            </div>
-          ))}
+        {isOpenList && (
+          <div className="favorite-charaters-list-container">
+            {favoriteCharacters.map((item) => (
+              <div className="favorite-characters-list" key={item.name}>
+                <FavoritesList
+                  name={item.name}
+                  image={item.image}
+                  handleDeleteFavoriteCharacters={
+                    handleDeleteFavoriteCharacters
+                  }
+                />
+              </div>
+            ))}
+          </div>
+        )}
+        <Modal onClose={hideModal} open={open} />
         <div className="dashboards-button-content">
           <div className="logohp-img">
             <img src={logohp} alt="logoHp" />
