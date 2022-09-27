@@ -1,4 +1,5 @@
 import favoriteIconBorder from "../../assets/favoriteIconBorder.png";
+import { useScreenSize } from "../../helpers/hooks/useScreenSize";
 
 export const Card = (props) => {
   const {
@@ -14,6 +15,10 @@ export const Card = (props) => {
     handleSaveFavorite,
     house,
   } = props;
+
+  const width = useScreenSize();
+
+  const isMobile = width <= 700;
 
   const changeBackgroundColorCard = (house) => {
     let background;
@@ -48,56 +53,63 @@ export const Card = (props) => {
 
   return (
     <>
-      <div className="card-content">
-        <div
-          className="card-content-left"
-          style={{ background: `${changeBackgroundColorCard(house)}` }}
-        >
-          <img src={image} alt={name} />
-        </div>
-        <div
-          className="card-content-right"
-          style={{ backgroundColor: `${changeBackgroundColorStatus(status)}` }}
-        >
-          <div className="header-card">
-            <p>
-              {status}/{degree}
-            </p>
-            <button onClick={() => handleSaveFavorite(character)}>
-              <img src={favoriteIconBorder} alt="addIcon" />
-            </button>
+      {isMobile ? (
+        <div className="card-mobile-content">
+          <div
+            className="card-mobile-content-top"
+            style={{ background: `${changeBackgroundColorCard(house)}` }}
+          >
+            <img src={image} alt={name} />
           </div>
-          <h3>{name}</h3>
-          <p>Cumpleaños: {dateOfBirth}</p>
-          <p>Género: {gender}</p>
-          <p>Color de ojos: {eyeColour}</p>
-          <p>Color de cabello: {hairColour}</p>
-        </div>
-      </div>
-      <div className="card-mobile-content">
-        <div
-          className="card-mobile-content-top"
-          style={{ background: `${changeBackgroundColorCard(house)}` }}
-        >
-          <img src={image} alt={name} />
-        </div>
-        <div
-          className="card-mobile-content-down"
-          style={{ backgroundColor: `${changeBackgroundColorStatus(status)}` }}
-        >
-          <div className="card-mobile-title">
-            <p>{name}</p>
-          </div>
-          <div className="card-mobile-button">
-            <p>
-              {status}/{degree}
-            </p>
-            <button onClick={() => handleSaveFavorite(character)}>
-              <img src={favoriteIconBorder} alt="addIcon" />
-            </button>
+          <div
+            className="card-mobile-content-down"
+            style={{
+              backgroundColor: `${changeBackgroundColorStatus(status)}`,
+            }}
+          >
+            <div className="card-mobile-title">
+              <p>{name}</p>
+            </div>
+            <div className="card-mobile-button">
+              <p>
+                {status}/{degree}
+              </p>
+              <button onClick={() => handleSaveFavorite(character)}>
+                <img src={favoriteIconBorder} alt="addIcon" />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="card-content">
+          <div
+            className="card-content-left"
+            style={{ background: `${changeBackgroundColorCard(house)}` }}
+          >
+            <img src={image} alt={name} />
+          </div>
+          <div
+            className="card-content-right"
+            style={{
+              backgroundColor: `${changeBackgroundColorStatus(status)}`,
+            }}
+          >
+            <div className="header-card">
+              <p>
+                {status}/{degree}
+              </p>
+              <button onClick={() => handleSaveFavorite(character)}>
+                <img src={favoriteIconBorder} alt="addIcon" />
+              </button>
+            </div>
+            <h3>{name}</h3>
+            <p>Cumpleaños: {dateOfBirth}</p>
+            <p>Género: {gender}</p>
+            <p>Color de ojos: {eyeColour}</p>
+            <p>Color de cabello: {hairColour}</p>
+          </div>
+        </div>
+      )}
     </>
   );
 };
