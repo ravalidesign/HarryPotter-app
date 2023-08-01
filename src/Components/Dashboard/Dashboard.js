@@ -93,7 +93,7 @@ export const Dashboard = () => {
               ESTUDIANTES
             </button>
             <div className="space-button"></div>
-            <button onClick={() => filterCharacter("staff")}>STAFF</button>
+            <button onClick={() => filterCharacter("staff")}>PROFESORES</button>
           </div>
         </div>
       </div>
